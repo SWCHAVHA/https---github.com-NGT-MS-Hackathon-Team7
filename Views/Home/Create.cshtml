@@ -1,0 +1,56 @@
+@model Penalty_Calculation1.Models.HolidayCalender
+
+<h2>Add Holiday</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="Country">Country</label>
+        <input asp-for="Country" class="form-control" />
+        <span asp-validation-for="Country" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="HolidayDate">Holiday Date</label>
+        <input asp-for="HolidayDate" class="form-control" />
+        <span asp-validation-for="HolidayDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="LastUpdatedDate">Last Updated Date</label>
+        <input asp-for="LastUpdatedDate" class="form-control" />
+        <span asp-validation-for="LastUpdatedDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description">Description</label>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Year">Year</label>
+        <input asp-for="Year" class="form-control" />
+        <span asp-validation-for="Year" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CntlUserid">Control User ID</label>
+        <input asp-for="CntlUserid" class="form-control" />
+        <span asp-validation-for="CntlUserid" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+</form>
+@if (!ViewData.ModelState.IsValid)
+
+    {
+
+        <div class="alert alert-danger">
+
+            @Html.ValidationSummary(true)
+
+        </div>
+
+    }

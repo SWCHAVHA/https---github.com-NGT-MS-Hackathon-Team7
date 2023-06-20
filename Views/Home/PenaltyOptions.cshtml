@@ -1,0 +1,85 @@
+@model List<Penalty_Calculation1.Models.Transaction>
+
+@{
+
+    ViewData["Title"] = "Penalty Options";
+
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>@ViewData["Title"]</title>
+
+    <link rel="stylesheet" type="text/css" href="~/css/site.css">
+
+    <style>
+        h1 {
+
+            color: black;
+
+            font-weight: bold;
+
+            text-align: center;
+
+            font-size: 20px;
+
+        }
+        p {
+
+            font-size: 14px;
+
+            font-family: Arial, sans-serif;
+
+        }
+        button {
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            background-color: lightgreen;
+
+            cursor: pointer;
+
+            padding: 8px 16px;
+
+        }
+        .button-space {
+
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Penalty Options</h1>
+
+    <div style="display: flex; justify-content: space-between;">
+        <form method="post" action="/Home/ViewAllPenalties">
+            <p>1. Click on the "View all penalty details" button to view all penalty details.</p>
+            <button type="submit">View all penalty details</button>
+        </form>
+
+        <form method="post" action="/Home/UpdatePenalties">
+            <p>2. Click on the "Update Penalties" button to update penalties.</p>
+            <button type="submit">Update Penalties</button>
+        </form>
+
+        <form method="post" action="/Home/ValidateRejectPenalties">
+            <p>3. Click on the "Validate or Reject updated penalties" button to validate or reject updated penalties.
+            </p>
+            <button type="submit">Validate or Reject updated penalties</button>
+        </form>
+    </div>
+
+</body>
+
+
+</html>
+
+

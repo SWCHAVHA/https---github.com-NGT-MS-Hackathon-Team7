@@ -1,0 +1,149 @@
+@model List<Penalty_Calculation1.Models.HolidayCalender>
+
+@{
+    ViewData["Title"] = "Holidays";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" type="text/css" href="~/css/site.css">
+</head>
+
+
+<body>
+    <h1>Holidays</h1>
+
+    <form method="get" action="@Url.Action("Holidays")">
+        <label for="searchCountry">Search by Country: </label>
+        <input type="text" id="searchCountry" name="country" />
+        <label for="searchHolidayId">Search by Holiday ID: </label>
+        <input type="text" id="searchHolidayId" name="holidayId" />
+        <button type="submit">Search</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Holiday ID</th>
+                <th>Country</th>
+                <th>Holiday Date</th>
+                <th>Last Updated Date</th>
+                <th>Description</th>
+                <th>Year</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var holiday in Model)
+            {
+                <tr>
+                    <td>@holiday.HolidayId</td>
+                    <td>@holiday.Country.CountryName</td>
+                    <td>@holiday.HolidayDate</td>
+                    <td>@holiday.LastUpdatedDate</td>
+                    <td>@holiday.Description</td>
+                    <td>@holiday.Year</td>
+                    <td>
+                        <a asp-action="EditHoliday" asp-route-id="@holiday.HolidayId">Edit</a> |
+                        <form asp-action="DeleteHoliday" asp-route-id="@holiday.HolidayId" method="post"
+                            onsubmit="return confirm('Are you sure you want to delete this holiday?');">
+                            <button type="submit">Delete</button>
+                           
+                        </form>
+                    </td>
+                   
+                </tr>
+
+            }
+        </tbody>
+    </table>
+     <div class="form-group">
+    
+    <button style="margin-left: 200px;"><a type="submit" href="/Home/Create">Create</a> </button>
+</div>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

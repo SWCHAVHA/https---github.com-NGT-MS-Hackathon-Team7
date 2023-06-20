@@ -1,0 +1,52 @@
+@model List<Penalty_Calculation1.Models.SecurityPenaltyRate>
+
+@{
+    ViewData["Title"] = "Penalty Rates";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" type="text/css" href="~/css/site.css">
+</head>
+<body>
+    <h1>Penalty Rates</h1>
+<form method="get" action="/api/SecurityPenaltyRate">
+        <label for="penaltyId">Search by Penalty ID:</label>
+        <input type="text" name="penalty_id" id="penaltyId">
+        <button type="submit">Search</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Penalty ID</th>
+                <th>Penalty Rate</th>
+                <th>Valid From Date</th>
+                <th>Last Updated Date</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var penaltyRate in Model)
+            {
+                <tr>
+                    <td>@penaltyRate.PenaltyId</td>
+                    <td>@penaltyRate.PenaltyRate</td>
+                    <td>@penaltyRate.ValidFromDate</td>
+                    <td>@penaltyRate.LastUpdatedDate</td>
+                    
+                    <td>
+                        <a asp-action="EditPenaltyRate" asp-route-id="@penaltyRate.PenaltyId">Edit</a> |
+                        <form asp-action="DeletePenaltyRate" asp-route-id="@penaltyRate.PenaltyId" method="post" onsubmit="return confirm('Are you sure you want to delete this penalty rate?');">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+     <button style="margin-left: 200px;"><a type="submit" href="/Home/CreatePenaltyRates">Create</a> </button>
+</body>
+</html>

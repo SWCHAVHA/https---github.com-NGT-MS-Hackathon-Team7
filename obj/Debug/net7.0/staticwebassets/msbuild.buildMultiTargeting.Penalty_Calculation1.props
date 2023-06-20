@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Penalty_Calculation1.props" />
+</Project>

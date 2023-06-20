@@ -1,0 +1,49 @@
+@{
+    ViewData["Title"] = "Reference Data";
+    var showHolidays = ViewData["ShowHolidays"] as bool? ?? false;
+    var showSecurities = ViewData["ShowSecurities"] as bool? ?? false;
+    var showPenaltyRates = ViewData["ShowPenaltyRates"] as bool? ?? false;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" type="text/css" href="~/css/site.css">
+    <style>
+        h2 {
+            font-size: 20px;
+        }
+
+         .btn {
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px 20px;
+            align-content: center;
+        }
+        
+        .selected {
+            background-color: #e0e0e0;
+        }
+
+        .reference-info {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: brown;
+
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Reference Data</h1>
+    <div class="reference-info">
+        <p>This page provides access to reference data for holidays, securities, and penalty rates. Use the buttons below to navigate:</p>
+    </div>
+    <div>
+        <a class="btn @(showHolidays ? "selected" : "")" href="/Home/Holidays">Holidays</a>
+        <a class="btn @(showSecurities ? "selected" : "")" href="/Home/Securities">Securities</a>
+        <a class="btn @(showPenaltyRates ? "selected" : "")" href="/Home/PenaltyRates">Penalty Rates</a>
+    </div>
+</body>
+</html>

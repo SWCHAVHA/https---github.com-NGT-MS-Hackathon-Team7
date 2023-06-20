@@ -1,0 +1,58 @@
+@model List<ReportModel>
+
+<h1>Daily Penalty Report</h1>
+
+@if (Model != null && Model.Count > 0)
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Place of Holding Tech Number</th>
+                <th>ISIN</th>
+                <th>Security Quantity</th>
+                <th>Transaction Type Code</th>
+                <th>Instruction Type Code</th>
+                <th>Matching Reference</th>
+                <th>Settlement Date</th>
+                <th>Place of Settlement</th>
+                <th>Settlement Cash Amount</th>
+                <th>Calendar ID</th>
+                <th>Party ID</th>
+                <th>Counterparty ID</th>
+                <th>Party Role Code</th>
+                <th>Counterparty Role Code</th>
+                <th>Failing Party Role Code</th>
+                <th>Penalty Amount</th>
+                <th>Sign</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var report in Model)
+            {
+                <tr>
+                    <td>@report.PlaceOfHoldingTechNumber</td>
+                    <td>@report.ISIN</td>
+                    <td>@report.SecurityQuantity</td>
+                    <td>@report.TransactionTypeCode</td>
+                    <td>@report.InstructionTypeCode</td>
+                    <td>@report.MatchingReference</td>
+                    <td>@report.SettlementDate</td>
+                    <td>@report.PlaceOfSettlement</td>
+                    <td>@report.SettlementCashAmount</td>
+                    <td>@report.CalendarId</td>
+                    <td>@report.PartyId</td>
+                    <td>@report.CounterPartyId</td>
+                    <td>@report.PartyRoleCode</td>
+                    <td>@report.CounterPartyRoleCode</td>
+                    <td>@report.FailingPartyRoleCode</td>
+                    <td>@report.PenaltyAmount</td>
+                    <td>@report.Sign</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No data available for the daily penalty report.</p>
+}

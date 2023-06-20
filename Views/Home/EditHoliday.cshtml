@@ -1,0 +1,48 @@
+@model Penalty_Calculation1.Models.HolidayCalender
+
+<h2>Edit Holiday</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.HolidayId)
+
+    <div class="form-group">
+        <label asp-for="CountryId">Country</label>
+        <input asp-for="CountryId" class="form-control" />
+        <span asp-validation-for="CountryId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="HolidayDate">Holiday Date</label>
+        <input asp-for="HolidayDate" class="form-control" />
+        <span asp-validation-for="HolidayDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="LastUpdatedDate">Last Updated Date</label>
+        <input asp-for="LastUpdatedDate" class="form-control" />
+        <span asp-validation-for="LastUpdatedDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description">Description</label>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Year">Year</label>
+        <input asp-for="Year" class="form-control" />
+        <span asp-validation-for="Year" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CntlUserid">Control User ID</label>
+        <input asp-for="CntlUserid" class="form-control" />
+        <span asp-validation-for="CntlUserid" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+}

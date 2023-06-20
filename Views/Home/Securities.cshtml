@@ -1,0 +1,68 @@
+@model List<Penalty_Calculation1.Models.SecurityPrice>
+
+@{
+    ViewData["Title"] = "Securities";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" type="text/css" href="~/css/site.css">
+
+    <style>
+        .button-group {
+            display: flex;
+            gap: 80px;
+            /* Adjust the gap as per your preference */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Securities</h1>
+
+    <form method="get" action="/Home/Securities">
+        <label for="priceId">Search by Price ID:</label>
+        <input type="text" name="priceId" id="priceId">
+        <button type="submit">Search</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Price ID</th>
+                <th>POH</th>
+                <th>ISIN SEC ID</th>
+                <th>Valid From Date</th>
+                <th>Sec Price</th>
+                <th>Approval</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var security in Model)
+            {
+                <tr>
+                    <td>@security.PriceId</td>
+                    <td>@security.Poh</td>
+                    <td>@(string.Join(", ", security.IsinSecId))</td>
+                    <td>@security.ValidFromDate</td>
+                    <td>@security.SecPrice</td>
+
+                    <td>
+                        <a asp-action="EditSecurity" asp-route-id="@security.PriceId">Edit</a> |
+                        <form asp-action="DeleteSecurity" asp-route-id="@security.PriceId" method="post"
+                            onsubmit="return confirm('Are you sure you want to delete this security?');">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <button style="margin-left: 200px;"><a type="submit" href="/Home/CreateSecurities">Create</a> </button>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+@model Penalty_Calculation1.Models.SecurityPrice
+
+<h2>Edit Security</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.PriceId)
+
+    <div class="form-group">
+        <label asp-for="Poh">POH</label>
+        <input asp-for="Poh" class="form-control" />
+        <span asp-validation-for="Poh" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="IsinSecId">ISIN/Sec ID</label>
+        <input asp-for="IsinSecId" class="form-control" />
+        <span asp-validation-for="IsinSecId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ValidFromDate">Valid From Date</label>
+        <input asp-for="ValidFromDate" class="form-control" />
+        <span asp-validation-for="ValidFromDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SecPrice">Security Price</label>
+        <input asp-for="SecPrice" class="form-control" />
+        <span asp-validation-for="SecPrice" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CntlTimestamp">Control Timestamp</label>
+        <input asp-for="CntlTimestamp" class="form-control" />
+        <span asp-validation-for="CntlTimestamp" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CntlUserid">Control User ID</label>
+        <input asp-for="CntlUserid" class="form-control" />
+        <span asp-validation-for="CntlUserid" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+}

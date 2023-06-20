@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" type="text/css" href="~/css/site.css">
+    <style>
+        h1 {
+            color: black;
+            font-weight: bold;
+            text-align: center;
+            font-size: 20px;
+            margin-top: 30px;
+            margin-bottom: 80px;
+        }
+
+        p {
+            font-size: 16px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            margin-top: 40px;
+            margin-bottom: 30px;
+            padding: 10px;
+        }
+
+        button {
+            font-size: 12px;
+            font-weight: 200;
+            background-color: lightgreen;
+            cursor: pointer;
+            padding: 5px 10px; /* Adjust the padding values to make the button smaller */
+            margin-top: 20px; /* Increase the margin-top value for proper distance */
+        }
+
+        .button-space {
+            margin-bottom: 40px;
+        }
+
+        .button-description {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Report Options</h1>
+
+    <form method="post" action="/Home/GenerateReport">
+        <p>Select a report type:</p>
+        <select name="reportType" style="font-size: 16px; background-color: lightyellow;">
+            <option value="daily">Daily Penalty Report by Party</option>
+            <option value="monthly">Monthly Penalty Report by Party</option>
+        </select>
+
+        <br>
+        <br>
+
+        <button type="submit" style="font-size: 14px;">Generate Report</button> <!-- Adjust the font-size to match the new button size -->
+    </form>
+
+</body>
+
+</html>

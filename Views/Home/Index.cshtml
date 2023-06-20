@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewData["Title"] = "Reference Data";
+}
+  
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" type="text/css" href="~/css/site.css">
+    <style>
+        h1 {
+            color: black;
+            font-weight: bold;
+            text-align: center;
+            font-size: 20px;
+        }
+        
+        p {
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+        }
+
+        button {
+            font-size: 12px;
+            font-weight: 700;
+            background-color: lightgreen;
+            cursor: pointer;
+            padding: 8px 16px;
+        }
+
+        .button-space {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the CSDR PENALTY CALCULATION PAGE</h1>
+    <h3>This is the home page content.</h3>
+    
+    <!--<form method="post" action="/Home/ReferenceData" style="display: inline-block;">
+        <p>1. Click on the "View Reference Data" button to view all the data.</p>
+        <button type="submit">View Reference Data</button>
+    </form>
+
+    <div class="button-space"></div>
+
+    <form method="post" action="/Home/Penalty" style="display: inline-block;">
+        <p>2. Click on the "Penalty" button to view penalty data.</p>
+        <button type="submit">Penalty</button>
+    </form>
+
+    <div class="button-space"></div>
+
+    <form method="post" action="/Home/Report" style="display: inline-block;">
+        <p>3. Click on the "Report" button to generate a report.</p>
+        <button type="submit">Report</button>
+    </form>-->\
+
+    <div style="display: flex; justify-content: space-between;">
+        <form method="post" action="/Home/ReferenceData">
+            <p>1. Click on the "View Reference Data" button to view all the data.</p>
+            <button type="submit">View Reference Data</button>
+        </form>
+
+        <form method="post" action="/Home/Penalty">
+            <p>2. Click on the "Penalty" button to view penalty data.</p>
+            <button type="submit">Penalty</button>
+        </form>
+
+        <form method="post" action="/Home/Report">
+            <p>3. Click on the "Report" button to generate a report.</p>
+            <button type="submit">Report</button>
+        </form>
+    </div>
+</body>
+</html>
