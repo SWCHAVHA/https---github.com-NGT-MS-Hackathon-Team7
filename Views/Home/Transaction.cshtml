@@ -1,0 +1,98 @@
+@model List<Penalty_Calculation1.Models.Transaction>
+
+@{
+    ViewData["Title"] = "Transaction";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" type="text/css" href="~/css/site.css">
+</head>
+
+<body>
+    <h1>Penalties</h1>
+
+    <form method="get" action="@Url.Action("UpdatePenalties")">
+        <!-- Search form, if needed -->
+    </form>
+
+    <div class="form-group">
+
+        <button><a href="/Home/Penalty">Back</a></button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Transaction ID</th>
+                <th>Place of Holding Tech Number</th>
+                <th>ISIN</th>
+                <th>Security Quantity</th>
+                <th>Transaction Type Code</th>
+                <th>Instruction Type Code</th>
+                <th>Matching Reference</th>
+                <th>Settlement Date</th>
+                <th>Settlement Cash Amount</th>
+                <!--<th>Calendar ID</th>-->
+                <th>Party ID</th>
+                <th>Penalty ID</th>
+                <th>Price ID</th>
+                <th>Login ID</th>
+                <th>Counter Party ID</th>
+                <th>Party Role Code</th>
+                <th>Counter Party Role Code</th>
+                <th>Failing Party Role Code</th>
+                <th>Penalty Amount</th>
+                <th>Sign</th>
+                <th>Control Timestamp</th>
+                <th>Control User ID</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var transaction in Model.OrderBy(t => t.TransactionId))
+            {
+                <tr>
+                    <td>@transaction.TransactionId</td>
+                    <td>@transaction.PlaceOfHoldingTechNumber</td>
+                    <td>@transaction.Isin</td>
+                    <td>@transaction.SecurityQuantity</td>
+                    <td>@transaction.TransactionTypeCode</td>
+                    <td>@transaction.InstructionTypeCode</td>
+                    <td>@transaction.MatchingReference</td>
+                    <td>@transaction.SettlementDate</td>
+                    <td>@transaction.SettlementCashAmount</td>
+                    @* <td>@transaction.CalendarId</td> *@
+                    <td>@transaction.PartyId</td>
+                    <td>@transaction.PenaltyId</td>
+                    <td>@transaction.PriceId</td>
+                    <td>@transaction.LoginId</td>
+                    <td>@transaction.CounterPartyId</td>
+                    <td>@transaction.PartyRoleCd</td>
+                    <td>@transaction.CounterPartyRoleCd</td>
+                    <td>@transaction.FailingPartyRoleCd</td>
+                    <td>@transaction.PenaltyAmount</td>
+                    <td>@transaction.Sign</td>
+                    <td>@transaction.CntlTimestamp</td>
+                    <td>@transaction.CntlUserid</td>
+                    <td>
+                        <a asp-action="EditPenalties" asp-route-id="@transaction.TransactionId">Edit</a> |
+                        <form asp-action="RemovePenalties" asp-route-id="@transaction.TransactionId" method="post"
+                            onsubmit="return confirm('Are you sure you want to delete this penalty?');">
+                            <button type="submit">Delete</button>
+                        </form>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+
+</html>
+
+
+

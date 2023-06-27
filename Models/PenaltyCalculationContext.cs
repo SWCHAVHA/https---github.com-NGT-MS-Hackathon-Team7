@@ -23,11 +23,15 @@ public partial class PenaltyCalculationContext : DbContext
 
     public virtual DbSet<Party> Parties { get; set; }
 
+    public virtual DbSet<PenaltyModel> PenaltyModels { get; set; }
+
     public virtual DbSet<SecurityPenaltyRate> SecurityPenaltyRates { get; set; }
 
     public virtual DbSet<SecurityPrice> SecurityPrices { get; set; }
 
     public virtual DbSet<Transaction> Transactions { get; set; }
+
+    public virtual DbSet<User> Users { get; set; }
 
     public virtual DbSet<Userrole> Userroles { get; set; }
 
@@ -81,6 +85,9 @@ public partial class PenaltyCalculationContext : DbContext
                 .HasMaxLength(30)
                 .IsFixedLength()
                 .HasColumnName("description");
+            entity.Property(e => e.Enable)
+                .HasDefaultValueSql("true")
+                .HasColumnName("enable");
             entity.Property(e => e.HolidayDate).HasColumnName("holiday_date");
             entity.Property(e => e.LastUpdatedDate).HasColumnName("last_updated_date");
             entity.Property(e => e.Year).HasColumnName("year");
@@ -154,6 +161,22 @@ public partial class PenaltyCalculationContext : DbContext
                 .HasColumnName("party_name");
         });
 
+        modelBuilder.Entity<PenaltyModel>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToTable("penalty_model");
+
+            entity.Property(e => e.FailedTransactionQty).HasColumnName("failed_transaction_qty");
+            entity.Property(e => e.SecurityPenaltyRate)
+                .HasPrecision(18, 2)
+                .HasColumnName("security_penalty_rate");
+            entity.Property(e => e.SecurityPrice)
+                .HasPrecision(18, 2)
+                .HasColumnName("security_price");
+            entity.Property(e => e.TransactionId).HasColumnName("transaction_id");
+        });
+
         modelBuilder.Entity<SecurityPenaltyRate>(entity =>
         {
             entity.HasKey(e => e.PenaltyId).HasName("security_penalty_rate_pkey");
@@ -163,6 +186,25 @@ public partial class PenaltyCalculationContext : DbContext
             entity.Property(e => e.PenaltyId)
                 .UseIdentityAlwaysColumn()
                 .HasColumnName("penalty_id");
+            entity.Property(e => e.Approval)
+                .HasMaxLength(20)
+                .HasDefaultValueSql("'approved'::bpchar")
+                .IsFixedLength()
+                .HasColumnName("approval");
+            entity.Property(e => e.ApprovePenaltyRequired)
+                .HasDefaultValueSql("250")
+                .HasColumnName("approve_penalty_required");
+            entity.Property(e => e.CntlTimestamp).HasColumnName("cntl_timestamp");
+            entity.Property(e => e.CntlUserid)
+                .HasMaxLength(15)
+                .IsFixedLength()
+                .HasColumnName("cntl_userid");
+            entity.Property(e => e.Enable)
+                .HasDefaultValueSql("true")
+                .HasColumnName("enable");
+            entity.Property(e => e.Isin)
+                .HasMaxLength(255)
+                .HasColumnName("isin");
             entity.Property(e => e.LastUpdatedDate).HasColumnName("last_updated_date");
             entity.Property(e => e.PenaltyRate).HasColumnName("penalty_rate");
             entity.Property(e => e.ValidFromDate).HasColumnName("valid_from_date");
@@ -182,6 +224,9 @@ public partial class PenaltyCalculationContext : DbContext
                 .HasMaxLength(15)
                 .IsFixedLength()
                 .HasColumnName("cntl_userid");
+            entity.Property(e => e.Enable)
+                .HasDefaultValueSql("true")
+                .HasColumnName("enable");
             entity.Property(e => e.IsinSecId)
                 .HasMaxLength(20)
                 .IsFixedLength()
@@ -219,6 +264,9 @@ public partial class PenaltyCalculationContext : DbContext
                 .HasMaxLength(6)
                 .IsFixedLength()
                 .HasColumnName("counter_party_role_cd");
+            entity.Property(e => e.Enable)
+                .HasDefaultValueSql("true")
+                .HasColumnName("enable");
             entity.Property(e => e.FailingPartyRoleCd)
                 .HasMaxLength(6)
                 .IsFixedLength()
@@ -275,13 +323,20 @@ public partial class PenaltyCalculationContext : DbContext
 
             entity.HasOne(d => d.Penalty).WithMany(p => p.Transactions)
                 .HasForeignKey(d => d.PenaltyId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("transaction_penalty_id_fkey");
 
             entity.HasOne(d => d.Price).WithMany(p => p.Transactions)
                 .HasForeignKey(d => d.PriceId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("transaction_price_id_fkey");
+        });
+
+        modelBuilder.Entity<User>(entity =>
+        {
+            entity.ToTable("User");
+
+            entity.Property(e => e.Password).HasMaxLength(255);
+            entity.Property(e => e.Username).HasMaxLength(255);
         });
 
         modelBuilder.Entity<Userrole>(entity =>

@@ -1,11 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using Npgsql;
 using System;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers
 {
     [ApiController]
-    [Route("api/holidayCalendar")]
+  
     public class HolidayCalendarController : ControllerBase
     {
         private readonly string _connectionString = "Host=localhost;Port=5432;Database=Penalty_Calculation;Username=postgres;Password=Priti@12345";
@@ -13,6 +14,7 @@ namespace API.Controllers
  
 
         [HttpGet("{year}")]
+       
         public IActionResult GetHoliday(int year, string country)
         {
             try

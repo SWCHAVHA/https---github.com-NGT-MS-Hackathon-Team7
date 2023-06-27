@@ -5,6 +5,8 @@
     var showPenaltyRates = ViewData["ShowPenaltyRates"] as bool? ?? false;
 }
 
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,11 +34,16 @@
             color: brown;
 
         }
+        .back-button {
+        font-size: 6px;
+    
+    }
 
     </style>
 </head>
 <body>
     <h1>Reference Data</h1>
+    <button ><a type="submit" href="/Home/Index">Back</a> </button>
     <div class="reference-info">
         <p>This page provides access to reference data for holidays, securities, and penalty rates. Use the buttons below to navigate:</p>
     </div>
@@ -46,4 +53,6 @@
         <a class="btn @(showPenaltyRates ? "selected" : "")" href="/Home/PenaltyRates">Penalty Rates</a>
     </div>
 </body>
+
 </html>
+

@@ -3,8 +3,10 @@
 <h1>Edit Penalty Rate</h1>
 
 <form method="post" asp-action="EditPenaltyRate" asp-controller="Home">
+     
+    @Html.HiddenFor(model => model.CntlUserid)
     @Html.HiddenFor(model => model.PenaltyId)
-    
+
     <div class="form-group">
     <label asp-for="ValidFromDate">Valid From Date</label>
     <input asp-for="ValidFromDate" class="form-control" />
@@ -28,3 +30,4 @@
         <input type="submit" value="Save" class="btn btn-primary" />
     </div>
 </form>
+

@@ -1,0 +1,57 @@
+[
+    {
+      "PlaceOfHoldingTechNumber": "10",
+      "ISIN": "ANN4327C1220",
+      "SecurityQuantity": "300",
+      "SettlementCashAmount": 10444,
+      "TransactionTypeCode": "TRAD",
+      "InstructionTypecode": "DFP",
+      "MatchingReference": "776702220230112",
+      "MatchingDate": "2023-01-12",
+      "IntendedSettlementDate": "2023-01-12",
+      "PlaceOfSettlement": "MGTCBEBEXXX",
+      "CalendarId": "Euroeasy",
+      "PartyId": "1981854",
+      "CounterPartyId": "4794041",
+      "PartyRoleCd": "SELLER",
+      "CounterPartyRoleCd": "BUYER",
+      "FailingPartyRoleCd": "BUYER"
+    },
+    {
+      "PlaceOfHoldingTechNumber": "10",
+      "ISIN": "ANN4327C1220",
+      "SecurityQuantity": "147",
+      "SettlementCashAmount": 1507.44,
+      "TransactionTypeCode": "OWNI",
+      "InstructionTypecode": "DFP",
+      "MatchingReference": "565002420221109",
+      "MatchingDate": "2022-11-09",
+      "IntendedSettlementDate": "2022-11-09",
+      "PlaceOfSettlement": "MGTCBEBEXXX",
+      "CalendarId": "Euroeasy",
+      "PartyId": "0158542",
+      "CounterPartyId": "4794041",
+      "PartyRoleCd": "BUYER",
+      "CounterPartyRoleCd": "SELLER",
+      "FailingPartyRoleCd": "SELLER"
+    },
+    {
+      "PlaceOfHoldingTechNumber": "45",
+      "ISIN": "ANN4327C1220",
+      "SecurityQuantity": "147",
+      "SettlementCashAmount": 2377.88,
+      "TransactionTypeCode": "OWNI",
+      "InstructionTypecode": "DFP",
+      "MatchingReference": "776702220230112",
+      "MatchingDate": "2023-01-12",
+      "IntendedSettlementDate": "2023-01-12",
+      "PlaceOfSettlement": "CRSTGB22XXX",
+      "CalendarId": "Euroeasy",
+      "PartyId": "1981854",
+      "CounterPartyId": "4794041",
+      "PartyRoleCd": "BUYER",
+      "CounterPartyRoleCd": "SELLER",
+      "FailingPartyRoleCd": "SELLER"
+    }
+  ]
+  

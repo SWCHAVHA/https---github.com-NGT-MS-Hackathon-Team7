@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .card {
+            width: 30rem;
+            background-color: transparent;
+            border: none;
+            backdrop-filter: blur(5px);
+        }
+
+        .horizontal-cards {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .horizontal-cards .card {
+            margin: 0 10px;
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+            /* Add animation properties */
+            transition: transform 0.5s ease;
+        }
+
+        /* Add hover animation */
+        .card-img-top:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="horizontal-cards">
+        <div class="card">
+            <img src="css/img.jpg" class="card-img-top" alt="Banking Image 1">
+            <div class="card-body">
+                <p class="card-text">Euroeasy is a financial company in the EUROPEAN UNION (EU) that helps its customers and investors in Securities settlement services as a CSD (Central Security Depositors).</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="css/img1.jpg" class="card-img-top" alt="Banking Image 2">
+            <div class="card-body">
+                <p class="card-text">Central Securities Depositors Regulation (CSDR) has created a requirement for each CSD (Central Security Depositor) to charge a client a penalty for a settlement fail in the EU region.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="css/img2.jpg" class="card-img-top" alt="Banking Image 3">
+            <div class="card-body">
+                <p class="card-text">Euroeasy has approached Capgemini for building the 'core' CSDR Penalties Engine on a distributed platform that will be responsible for penalty calculation for intra-CSD settlement failed transactions based on business rules.</p>
+            </div>
+        </div>
+        <div>
+            <form method="post" action="/Account/ProcessJob">
+    <p>4. Click on the "Process Job" button to trigger the job.</p>
+    <button type="submit">Process Job</button>
+</form>
+
+        </div>
+    </div>
+    
+
+</body>
+</html>

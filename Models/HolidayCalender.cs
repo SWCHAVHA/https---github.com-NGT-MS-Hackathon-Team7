@@ -19,5 +19,7 @@ public partial class HolidayCalender
 
     public string CntlUserid { get; set; } = null!;
 
+    public bool? Enable { get; set; }
+
     public virtual Country Country { get; set; } = null!;
 }

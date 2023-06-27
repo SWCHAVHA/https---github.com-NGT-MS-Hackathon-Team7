@@ -23,11 +23,19 @@
 <body>
     <h1>Securities</h1>
 
-    <form method="get" action="/Home/Securities">
+    <form method="post" action="/Home/SearchSecurities">
         <label for="priceId">Search by Price ID:</label>
         <input type="text" name="priceId" id="priceId">
         <button type="submit">Search</button>
     </form>
+<div   class="form-group">
+    <button ><a type="submit" href="/Home/CreateSecurity">Create</a> </button>
+
+    <button ><a type="submit" href="/Home/ReferenceData">Back</a> </button>
+
+</div>
+
+ 
 
     <table>
         <thead>
@@ -62,7 +70,8 @@
             }
         </tbody>
     </table>
-    <button style="margin-left: 200px;"><a type="submit" href="/Home/CreateSecurities">Create</a> </button>
+    
 </body>
 
 </html>
+

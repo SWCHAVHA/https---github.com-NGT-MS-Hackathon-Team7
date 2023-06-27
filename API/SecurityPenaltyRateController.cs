@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 using Npgsql;
@@ -22,6 +23,7 @@ namespace API.Controllers
 
 
         [HttpGet("{penalty_id}")]
+         
 
         public IActionResult GetSecurityPenaltyRate(long penalty_id)
 

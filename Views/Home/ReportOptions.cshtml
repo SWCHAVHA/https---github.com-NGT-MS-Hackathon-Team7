@@ -1,9 +1,12 @@
-<!DOCTYPE html>
+
+@model List<Transaction>
+    
+
+
 <html>
 
 <head>
     <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" type="text/css" href="~/css/site.css">
     <style>
         h1 {
             color: black;
@@ -39,25 +42,186 @@
         .button-description {
             margin-top: 30px;
         }
+         table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
     </style>
 </head>
+<body>  
+    <div class="row">
+        <div class="col-12 text-center"><h1 class="m-5">Reports</h1></div>
+    </div>
+    <form class="row" method="post" action="/Home/GenerateReport">
+        <div class="col-3">
+            <select name="reportType" id="reportType" class="bg-yellow form-select form-select-lg">
+                <option value="daily">Daily Penalty Report by Party</option>
+                <option value="monthly">Monthly Penalty Report by Party</option>
+            </select>  
+            <div id="monthlyField" class="row pt-3" style="display:none">
+                <div class="col-6">
+                    <label><b>Enter Month</b></label>
+                    <select name="month" class="bg-yellow form-select">
+                         <option value="1">Jan</option>
+                         <option value="2">Feb</option>
+                         <option value="3">Mar</option>
+                         <option value="4">Apr</option>
+                         <option value="5">May</option>
+                         <option value="6">Jun</option>
+                         <option value="7">July</option>
+                         <option value="8">Aug</option>
+                         <option value="9">Sept</option>
+                         <option value="10">OCT</option>
+                         <option value="11">Nov</option>
+                         <option value="12">Dec</option>
+                    </select> 
+                </div>
+                <div class="col-6">
+                    <label><b>Enter Year</b></label>
+                     <select name="year" class="bg-yellow form-select">
+                         <option value="2023">2023</option>
+                         <option value="2022">2022</option>
+                         <option value="2021">2021</option>
+                         <option value="2020">2020</option>
+                         <option value="2019">2019</option>
+                         <option value="2018">2018</option>
+                         <option value="2017">2017</option>
+                         <option value="2016">2016</option>
+                         <option value="2015">2015</option>
+                         <option value="2014">2014</option>
+                         <option value="2013">2013</option>
+                         <option value="2012">2012</option>
 
-<body>
-    <h1>Report Options</h1>
+                    </select> 
+                </div>
+            </div>                             
+        </div>        
+        <div class="col-3">
+            <input type="submit" class="form-control btn btn-success btn-lg" value = "Generate Report"/>
+         </div>           
+     </form>
+    
+        <div class="row"> 
+            <div class="col-12">                               
+            <table  id="example" class="display nowrap" style="width:100%">
+                <thead>
+                <tr>
+                    <th>Transaction ID</th>
+                    <th>Place of Holding Tech Number</th>
+                    <th>ISIN</th>
+                    <th>Security Quantity</th>
+                    <th>Transaction Type Code</th>
+                    <th>Instruction Type Code</th>
+                    <th>Matching Reference</th>
+                    <th>Settlement Date</th>
+                    <th>Settlement Cash Amount</th>
+                    <th>Calendar ID</th>
+                    <th>Party ID</th>
+                    <th>Counter Party ID</th>
+                    <th>Party Role Code</th>
+                    <th>Counter Party Role Code</th>
+                    <th>Failing Party Role Code</th>
+                    <th>Penalty Amount</th>
+                    <th>Sign</th>                
+                </tr>
+                </thead>
+                <tbody>
+                    @foreach (var transaction in Model)
+                    {
+                        <tr>
+                            <td>@transaction.TransactionId</td>
+                            <td>@transaction.PlaceOfHoldingTechNumber</td>
+                            <td>@transaction.Isin</td>
+                            <td>@transaction.SecurityQuantity</td>
+                            <td>@transaction.TransactionTypeCode</td>
+                            <td>@transaction.InstructionTypeCode</td>
+                            <td>@transaction.MatchingReference</td>
+                            <td>@transaction.SettlementDate.ToShortDateString()</td>
+                            <td>@transaction.SettlementCashAmount</td>
+                            <td>@transaction.CalendarId</td>
+                            <td>@transaction.PartyId</td>
+                            <td>@transaction.CounterPartyId</td>
+                            <td>@transaction.PartyRoleCd</td>
+                            <td>@transaction.CounterPartyRoleCd</td>
+                            <td>@transaction.FailingPartyRoleCd</td>
+                            <td>@transaction.PenaltyAmount</td>
+                            <td>@transaction.Sign</td>                        
+                        </tr>
+                    }  
+                </tbody>             
+            </table>
+        </div>
+    </div>    
+   @section scripts 
+   {
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#reportType').on('change', function() {                
+                if(this.value == "monthly")
+                {
+                     $('#monthlyField').show();
+                }
+                else{
+                    $('#monthlyField').hide();
+                }
+            });
 
-    <form method="post" action="/Home/GenerateReport">
-        <p>Select a report type:</p>
-        <select name="reportType" style="font-size: 16px; background-color: lightyellow;">
-            <option value="daily">Daily Penalty Report by Party</option>
-            <option value="monthly">Monthly Penalty Report by Party</option>
-        </select>
 
-        <br>
-        <br>
-
-        <button type="submit" style="font-size: 14px;">Generate Report</button> <!-- Adjust the font-size to match the new button size -->
-    </form>
+            $('#example').DataTable({
+                dom: 'Bfrtip',
+                columnDefs: [
+                    {
+                        target: 0,
+                        visible: false,
+                    },
+                    {
+                        target: 1,
+                        visible: false,
+                    },
+                    {
+                        target: 9,
+                        visible: false,
+                    },
+                    {
+                        target: 10,
+                        visible: false,
+                    },
+                    {
+                        target: 11,
+                        visible: false,
+                    },
+                    {
+                        target: 12,
+                        visible: false,
+                    },
+                    {
+                        target: 13,
+                        visible: false,
+                    },
+                    {
+                        target: 14,
+                        visible: false,
+                    },
+                    {
+                        target: 16,
+                        visible: false,
+                    },
+                ],
+                buttons: [
+                     'excel', 'pdf', 'print'
+                ]
+            });
+        });
+    </script>
+   }
 
 </body>
 
 </html>
+

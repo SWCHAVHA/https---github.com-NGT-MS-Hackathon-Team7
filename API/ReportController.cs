@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Npgsql;
 using Penalty_Calculation1.Models;
@@ -25,6 +26,7 @@ namespace PenaltyReportAPI.Controllers
         //private readonly string _connectionString = "";
 
         [HttpGet]
+          [Authorize(Roles = "Admin,User")]
         [Route("DailyReport")]
         public IActionResult GetGenerateDailyPenaltyReport()
         {            
@@ -54,6 +56,7 @@ namespace PenaltyReportAPI.Controllers
         }
 
          [HttpGet]
+           
         [Route("MonthlyReport")]
         public IActionResult GetGenerateMonthlyPenaltyReport(int month, int year)
         {            

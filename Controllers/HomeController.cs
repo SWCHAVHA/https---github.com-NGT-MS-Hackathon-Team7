@@ -2,17 +2,19 @@
 using Microsoft.AspNetCore.Mvc;
 using Penalty_Calculation1.Models;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
+
 using System.Net;
+using Microsoft.AspNetCore.Authorization;
+using Penalty_Calculation1.Job;
 
 namespace Penalty_Calculation1.Controllers
 {
     public class HomeController : Controller
     {
         private readonly PenaltyCalculationContext _dbContext;
-       
-       
-        
+
+
+
 
         public HomeController(PenaltyCalculationContext dbContext)
         {
@@ -23,26 +25,47 @@ namespace Penalty_Calculation1.Controllers
         {
             return View();
         }
+        public IActionResult HomeView()
+
+        {
+            return View();
+        }
 
         public IActionResult Privacy()
         {
             return View();
         }
 
+
+
+
+
         public IActionResult Report()
         {
-            return View("ReportOptions");
+            return View("ReportOptions", new List<Transaction>());
         }
 
-        public IActionResult Penalty()
-        {
-            return View("PenaltyOptions");
-        }
+        public IActionResult GenerateReport(int month, int year, string reportType)
 
-        public IActionResult ViewAllPenalties()
         {
-            List<Transaction> transactions = _dbContext.Transactions.ToList();
-            return View("AllPenalties", transactions);
+            DateOnly currentDate = DateOnly.FromDateTime(DateTime.Today);
+            if (reportType == "daily")
+            {
+
+                List<Transaction> transactions = _dbContext.Transactions.Where(e => e.SettlementDate == currentDate).ToList();
+                return View("ReportOptions", transactions);
+            }
+            else
+            {
+                var startDate = new DateOnly(year, month, 1);
+                var endDate = startDate.AddMonths(1).AddDays(-1);
+
+                List<Transaction> transactions = _dbContext.Transactions
+                    .Where(e => e.SettlementDate >= startDate && e.SettlementDate <= endDate)
+                    .ToList();
+
+                return View("ReportOptions", transactions);
+            }
         }
 
 
@@ -70,174 +93,35 @@ namespace Penalty_Calculation1.Controllers
 
         public IActionResult Holidays()
         {
-            var holidays = _dbContext.HolidayCalenders.Include("Country").ToList();
+            var holidays = _dbContext.HolidayCalenders.Where(b => b.Enable == true).Include("Country").ToList();
             return View(holidays);
         }
 
 
         [HttpGet]
-        public IActionResult Create()
+        public IActionResult CreateHoliday()
         {
-
-            var model = new HolidayCalender();
-
-            return View(model);
-            //return View();
+            return View();
         }
-
 
         [HttpPost]
 
-        public ActionResult Create(HolidayCalender model)
+        public IActionResult CreateHoliday(HolidayCalender model)
 
         {
 
+            _dbContext.HolidayCalenders.Add(model);
 
-            SaveDataToDatabase(model);
+            _dbContext.SaveChanges();
+
+            ViewBag.Message = "data Insert Successfully";
 
             return RedirectToAction("Holidays");
-
-            return View(model);
-
         }
 
-        private void SaveDataToDatabase(HolidayCalender model)
-
-        {
-
-            // Implement your logic to save the data to the database
-
-            // Here, I assume you have a method to save the data to your database
-
-            // Example:
-
-            var newData = new HolidayCalender
-
-            {
-
-                HolidayId = model.HolidayId,
-
-                CountryId = model.CountryId,
-
-                HolidayDate = model.HolidayDate,
-
-                LastUpdatedDate = model.LastUpdatedDate,
-
-                Description = model.Description,
-
-                Year = model.Year,
-
-                // Set other properties accordingly
-
-            };
-
-            // Save newData to the database using your database context or repository
-
-        }
-/*
-        [HttpGet]
-        public IActionResult CreateSecurities()
-        {
-            var model = new SecurityPrice();
-
-            return View(model);
-            //return View();
-        }
-
-        [HttpPost]
-
-        public ActionResult CreateSecurities(SecurityPrice model)
-
-        {
-
-
-            SaveDataToDatabase(model);
-
-            return RedirectToAction("Securities");
-
-
-
-            return View(model);
-
-        }
-
-
-
-
-        private void SaveDataToDatabase(SecurityPrice model)
-
-        {
-
-            var newData = new SecurityPrice
-
-            {
-
-                PriceId = model.PriceId,
-
-                Poh = model.Poh,
-
-                IsinSecId = model.IsinSecId,
-
-                ValidFromDate = model.ValidFromDate,
-
-                SecPrice = model.SecPrice,
-
-            };
-
-        }
-*/
 
         [HttpGet]
-        public IActionResult CreatePenaltyRates()
-        {
-            var model = new SecurityPenaltyRate();
 
-            return View(model);
-            //return View();
-        }
-
-        [HttpPost]
-
-        public ActionResult CreatePenaltyRates(SecurityPenaltyRate model)
-
-        {
-
-            if (ModelState.IsValid)
-
-            {
-
-                SaveDataToDatabase(model);
-
-                return RedirectToAction("PenaltyRates");
-
-            }
-
-            return View(model);
-
-        }
-
-        private void SaveDataToDatabase(SecurityPenaltyRate model)
-
-        {
-
-            var newData = new SecurityPenaltyRate
-
-            {
-
-                PenaltyId = model.PenaltyId,
-
-                PenaltyRate = model.PenaltyRate,
-
-                ValidFromDate = model.ValidFromDate,
-
-                LastUpdatedDate = model.LastUpdatedDate,
-
-
-            };
-
-        }
-
-        [HttpGet]
         public IActionResult EditHoliday(int id)
         {
             var holiday = _dbContext.HolidayCalenders.Find(id);
@@ -249,18 +133,23 @@ namespace Penalty_Calculation1.Controllers
         }
 
         [HttpPost]
+
         public IActionResult EditHoliday(HolidayCalender holiday)
         {
-            if (ModelState.IsValid)
-            {
-                _dbContext.HolidayCalenders.Update(holiday);
-                _dbContext.SaveChanges();
-                return RedirectToAction("Holidays");
-            }
-            return View(holiday);
-        }
 
+            DateOnly today = DateOnly.FromDateTime(DateTime.Today);
+            if (holiday.HolidayDate < today)
+            {
+                ModelState.AddModelError("HolidayDate", "Cannot select a past date for the holiday.");
+                return View(holiday);
+            }
+
+            _dbContext.HolidayCalenders.Update(holiday);
+            _dbContext.SaveChanges();
+            return RedirectToAction("Holidays");
+        }
         [HttpPost]
+
         public IActionResult DeleteHoliday(int id)
         {
             var holiday = _dbContext.HolidayCalenders.Find(id);
@@ -269,44 +158,66 @@ namespace Penalty_Calculation1.Controllers
                 return NotFound();
             }
 
-            _dbContext.HolidayCalenders.Remove(holiday);
+            holiday.Enable = false;
             _dbContext.SaveChanges();
             return RedirectToAction("Holidays");
         }
 
-        public IActionResult Securities()
-        {
-            var securities = _dbContext.SecurityPrices.ToList();
-            return View(securities);
-        }
 
-       [HttpGet]
-        public IActionResult CreateSecurities(long id)
+        [HttpGet]
+        public IActionResult SearchHolidays()
         {
-            var security = _dbContext.SecurityPrices.Find(id);
-            if (security == null)
-            {
-                return NotFound();
-            }
-            return View(security);
+            return View();
         }
 
         [HttpPost]
-        public IActionResult CreateSecurities(SecurityPrice security)
+        public IActionResult SearchHolidays(string country, int year)
         {
-            if (ModelState.IsValid)
+            var holidays = _dbContext.HolidayCalenders.Include(c => c.Country).ToList();
+
+            if (!string.IsNullOrEmpty(country))
             {
-                _dbContext.SecurityPrices.Add(security);
-                _dbContext.SaveChanges();
-                return RedirectToAction("Securities");
+                holidays = holidays.Where(h => h.Country.CountryName.Trim().Equals(country, StringComparison.OrdinalIgnoreCase)).ToList();
             }
 
+            if (year != 0)
+            {
+                holidays = holidays.Where(h => h.Year == year).ToList();
+            }
+
+            return View("Holidays", holidays);
+        }
 
 
-            return View(security);
+
+        public IActionResult Securities()
+        {
+            var securities = _dbContext.SecurityPrices.Where(b => b.Enable == true).ToList();
+            return View(securities);
         }
 
         [HttpGet]
+
+        public IActionResult CreateSecurity()
+        {
+            return View();
+        }
+
+        [HttpPost]
+
+        public IActionResult CreateSecurity(SecurityPrice model)
+        {
+
+            _dbContext.SecurityPrices.Add(model);
+            _dbContext.SaveChanges();
+            ViewBag.Message = "data Insert Successfully";
+
+            return RedirectToAction("Securities");
+        }
+
+
+        [HttpGet]
+
         public IActionResult EditSecurity(long id)
         {
             var security = _dbContext.SecurityPrices.Find(id);
@@ -316,23 +227,28 @@ namespace Penalty_Calculation1.Controllers
             }
             return View(security);
         }
-
         [HttpPost]
+
         public IActionResult EditSecurity(SecurityPrice security)
         {
             if (ModelState.IsValid)
             {
+                DateOnly today = DateOnly.FromDateTime(DateTime.Today);
+                if (security.ValidFromDate < today)
+                {
+                    ModelState.AddModelError("ValidFromDate", "Cannot select a past date for the security.");
+                    return View(security);
+                }
+
                 _dbContext.SecurityPrices.Update(security);
                 _dbContext.SaveChanges();
                 return RedirectToAction("Securities");
             }
-
-
-
             return View(security);
         }
 
         [HttpPost]
+
         public IActionResult DeleteSecurity(long id)
         {
             var security = _dbContext.SecurityPrices.Find(id);
@@ -341,30 +257,73 @@ namespace Penalty_Calculation1.Controllers
                 return NotFound();
             }
 
-            _dbContext.SecurityPrices.Remove(security);
+            security.Enable = false;
             _dbContext.SaveChanges();
             return RedirectToAction("Securities");
         }
 
-        public IActionResult PenaltyRatesAll()
+        [HttpGet]
+        public IActionResult SearchSecurities()
         {
-            var penaltyRates = _dbContext.SecurityPenaltyRates.ToList();
-            return View(penaltyRates);
+            return View();
         }
 
         [HttpPost]
-        public IActionResult CreatePenaltyRate(SecurityPenaltyRate penaltyRate)
+        public IActionResult SearchSecurities(string priceId)
         {
-            if (ModelState.IsValid)
+            if (!string.IsNullOrEmpty(priceId) && long.TryParse(priceId, out long id))
             {
-                _dbContext.SecurityPenaltyRates.Add(penaltyRate);
-                _dbContext.SaveChanges();
-                return RedirectToAction("PenaltyRates");
+                var securities = _dbContext.SecurityPrices
+                    .Where(s => s.PriceId == id)
+                    .ToList();
+
+                return View("Securities", securities);
             }
-            return View(penaltyRate);
+
+            var allSecurities = _dbContext.SecurityPrices.ToList();
+            return View("Securities", allSecurities);
+        }
+
+
+        public IActionResult PenaltyRates()
+        {
+            var penaltyRates = _dbContext.SecurityPenaltyRates.Where(b => b.Enable == true).ToList();
+            return View(penaltyRates);
+        }
+
+
+
+
+
+
+        [HttpGet]
+
+        public IActionResult CreatePenaltyRate()
+        {
+            return View();
+        }
+
+        [HttpPost]
+
+
+        public IActionResult CreatePenaltyRate(SecurityPenaltyRate model)
+        {
+
+
+            _dbContext.SecurityPenaltyRates.Add(model);
+
+            ViewBag.Message = "data Insert Successfully";
+
+
+
+            _dbContext.SaveChanges();
+            return RedirectToAction("PenaltyRates");
+
+
         }
 
         [HttpGet]
+
         public IActionResult EditPenaltyRate(long id)
         {
             var penaltyRate = _dbContext.SecurityPenaltyRates.Find(id);
@@ -374,33 +333,45 @@ namespace Penalty_Calculation1.Controllers
             }
             return View(penaltyRate);
         }
+
         [HttpPost]
+
+
         public IActionResult EditPenaltyRate(SecurityPenaltyRate model)
         {
-            if (ModelState.IsValid)
+            //if (ModelState.IsValid)
+            //{
+            DateOnly today = DateOnly.FromDateTime(DateTime.Today);
+            if (model.ValidFromDate < today)
             {
-                using (var dbContext = new PenaltyCalculationContext())
-                {
-                    var existingData = dbContext.SecurityPenaltyRates.Find(model.PenaltyId);
-
-                    if (existingData != null)
-                    {
-                        existingData.ValidFromDate = model.ValidFromDate;
-                        existingData.PenaltyRate = model.PenaltyRate;
-                        existingData.LastUpdatedDate = model.LastUpdatedDate;
-
-                        dbContext.SaveChanges();
-                    }
-                }
-
-                return RedirectToAction("PenaltyRates"); // Redirect to a success page or action
+                ModelState.AddModelError("ValidFromDate", "Cannot select a past date for the penalty rate.");
+                return View(model);
             }
 
-            return View(model); // Return the view with validation errors if the model is invalid
+            using (var dbContext = new PenaltyCalculationContext())
+            {
+                var existingData = dbContext.SecurityPenaltyRates.Find(model.PenaltyId);
+
+                if (existingData != null)
+                {
+                    existingData.ValidFromDate = model.ValidFromDate;
+                    existingData.PenaltyRate = model.PenaltyRate;
+                    existingData.LastUpdatedDate = model.LastUpdatedDate;
+
+                    dbContext.SaveChanges();
+                }
+            }
+
+            return RedirectToAction("PenaltyRates"); // Redirect to a success page or action
+                                                     //}
+
+            //return View(model); // Return the view with validation errors if the model is invalid
         }
 
 
+
         [HttpPost]
+
         public IActionResult DeletePenaltyRate(long id)
         {
             var penaltyRate = _dbContext.SecurityPenaltyRates.Find(id);
@@ -409,34 +380,102 @@ namespace Penalty_Calculation1.Controllers
                 return NotFound();
             }
 
-            _dbContext.SecurityPenaltyRates.Remove(penaltyRate);
+            penaltyRate.Enable = false;
             _dbContext.SaveChanges();
             return RedirectToAction("PenaltyRates");
+
         }
 
 
+        [HttpGet]
+        public IActionResult SearchPenaltyRates()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult SearchPenaltyRates(long penaltyId)
+        {
+            if (penaltyId != 0)
+            {
+                var penaltyRates = _dbContext.SecurityPenaltyRates
+                    .Where(p => p.PenaltyId == penaltyId)
+                    .ToList();
+
+                return View("PenaltyRates", penaltyRates);
+            }
+
+            var allPenaltyRates = _dbContext.SecurityPenaltyRates.ToList();
+            return View("PenaltyRates", allPenaltyRates);
+        }
+
+        public IActionResult Penalty()
+        {
+            return View("PenaltyOptions");
+        }
+
+        public IActionResult ViewAllPenalties()
+        {
+            List<Transaction> transactions = _dbContext.Transactions.ToList();
+            return View("AllPenalties", transactions);
+        }
+
+        public IActionResult UpdatePenalties()
+        {
+            List<Transaction> transactions = _dbContext.Transactions.Where(b => b.Enable == true).ToList();
+            return View("Transaction", transactions);
+        }
+
+        [HttpGet]
+        public IActionResult EditPenalties(int id)
+        {
+            var transaction = _dbContext.Transactions.FirstOrDefault(t => t.TransactionId == id);
+
+            if (transaction == null)
+            {
+                return NotFound();
+            }
+
+            return View(transaction);
+        }
+
+        [HttpPost]
+        public IActionResult EditPenalties(Transaction transaction)
+        {
+
+            var existingTransaction = _dbContext.Transactions.FirstOrDefault(t => t.TransactionId == transaction.TransactionId);
+
+            if (existingTransaction != null)
+            {
+                existingTransaction.PenaltyAmount = transaction.PenaltyAmount;
+
+                _dbContext.SaveChanges();
+
+                return RedirectToAction("UpdatePenalties");
+            }
+            return View(transaction);
+
+        }
+
+        [HttpPost]
+        public IActionResult RemovePenalties(int id)
+        {
+            var existingTransaction = _dbContext.Transactions.FirstOrDefault(t => t.TransactionId == id);
+
+            if (existingTransaction != null)
+            {
+                existingTransaction.Enable = false;
+                _dbContext.SaveChanges();
+            }
+
+            return RedirectToAction("UpdatePenalties");
+        }   
 
 
-    
 
-
+        
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

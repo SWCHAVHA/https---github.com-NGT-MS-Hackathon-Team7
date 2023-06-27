@@ -9,101 +9,121 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Penalty_Calculation1
 build_property.RootNamespace = Penalty_Calculation1
-build_property.ProjectDir = C:\Users\SWCHAVHA\OneDrive - Capgemini\Desktop\Penalty_Calculation1\
+build_property.ProjectDir = C:\Users\SWCHAVHA\OneDrive - Capgemini\Desktop\Penalty_Calculation1\Penalty_Calculation1\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\SWCHAVHA\OneDrive - Capgemini\Desktop\Penalty_Calculation1
+build_property.MSBuildProjectDirectory = C:\Users\SWCHAVHA\OneDrive - Capgemini\Desktop\Penalty_Calculation1\Penalty_Calculation1
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Views/Home/AllPenalties.cshtml]
+[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Penalty_Calculation1/Views/Account/HomeView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxIb21lVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Penalty_Calculation1/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Penalty_Calculation1/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Penalty_Calculation1/Views/Home/AllPenalties.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBbGxQZW5hbHRpZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Views/Home/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDcmVhdGUuY3NodG1s
+[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Penalty_Calculation1/Views/Home/CreateHoliday.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDcmVhdGVIb2xpZGF5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Views/Home/CreatePenaltyRates.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDcmVhdGVQZW5hbHR5UmF0ZXMuY3NodG1s
+[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Penalty_Calculation1/Views/Home/CreatePenaltyRate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDcmVhdGVQZW5hbHR5UmF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Views/Home/CreateSecurities.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDcmVhdGVTZWN1cml0aWVzLmNzaHRtbA==
+[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Penalty_Calculation1/Views/Home/CreateSecurity.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDcmVhdGVTZWN1cml0eS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Views/Home/DailyPenaltyReport.cshtml]
+[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Penalty_Calculation1/Views/Home/DailyPenaltyReport.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEYWlseVBlbmFsdHlSZXBvcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Views/Home/EditHoliday.cshtml]
+[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Penalty_Calculation1/Views/Home/EditHoliday.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFZGl0SG9saWRheS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Views/Home/EditPenaltyRate.cshtml]
+[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Penalty_Calculation1/Views/Home/EditPenalties.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFZGl0UGVuYWx0aWVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Penalty_Calculation1/Views/Home/EditPenaltyRate.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFZGl0UGVuYWx0eVJhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Views/Home/EditSecurity.cshtml]
+[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Penalty_Calculation1/Views/Home/EditSecurity.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFZGl0U2VjdXJpdHkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Views/Home/Holidays.cshtml]
+[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Penalty_Calculation1/Views/Home/Holidays.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIb2xpZGF5cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Views/Home/Index.cshtml]
+[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Penalty_Calculation1/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Views/Home/PenaltyOptions.cshtml]
+[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Penalty_Calculation1/Views/Home/PenaltyOptions.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQZW5hbHR5T3B0aW9ucy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Views/Home/PenaltyRates.cshtml]
+[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Penalty_Calculation1/Views/Home/PenaltyRates.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQZW5hbHR5UmF0ZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Views/Home/Privacy.cshtml]
+[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Penalty_Calculation1/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Views/Home/ReferenceData.cshtml]
+[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Penalty_Calculation1/Views/Home/ReferenceData.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWZlcmVuY2VEYXRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Views/Home/ReportModel.cshtml]
+[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Penalty_Calculation1/Views/Home/ReportModel.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZXBvcnRNb2RlbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Views/Home/ReportOptions.cshtml]
+[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Penalty_Calculation1/Views/Home/ReportOptions.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZXBvcnRPcHRpb25zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Views/Home/Securities.cshtml]
+[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Penalty_Calculation1/Views/Home/Securities.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZWN1cml0aWVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Views/Home/UpdatePenaltiesOptions.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVcGRhdGVQZW5hbHRpZXNPcHRpb25zLmNzaHRtbA==
+[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Penalty_Calculation1/Views/Home/Transaction.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUcmFuc2FjdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Views/Shared/Error.cshtml]
+[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Penalty_Calculation1/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Penalty_Calculation1/Views/Shared/_BackButton.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9CYWNrQnV0dG9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Penalty_Calculation1/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Views/_ViewImports.cshtml]
+[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Penalty_Calculation1/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Views/_ViewStart.cshtml]
+[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Penalty_Calculation1/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Views/Shared/_Layout.cshtml]
+[C:/Users/SWCHAVHA/OneDrive - Capgemini/Desktop/Penalty_Calculation1/Penalty_Calculation1/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-4khg9kzw1w

@@ -1,12 +1,17 @@
 @model List<Transaction>
 
+
 @{
     ViewData["Title"] = "All Penalties";
 }
 
+
 <!DOCTYPE html>
 <html>
 <head>
+    <div>
+        <button ><a type="submit" href="/Home/Penalty">Back</a> </button>
+    </div>  
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" type="text/css" href="~/css/site.css">
     <style>
@@ -36,7 +41,6 @@
             <th>Matching Reference</th>
             <th>Settlement Date</th>
             <th>Settlement Cash Amount</th>
-            <th>Calendar ID</th>
             <th>Party ID</th>
             <th>Counter Party ID</th>
             <th>Party Role Code</th>
@@ -58,7 +62,6 @@
                 <td>@transaction.MatchingReference</td>
                 <td>@transaction.SettlementDate</td>
                 <td>@transaction.SettlementCashAmount</td>
-                <td>@transaction.CalendarId</td>
                 <td>@transaction.PartyId</td>
                 <td>@transaction.CounterPartyId</td>
                 <td>@transaction.PartyRoleCd</td>
@@ -70,6 +73,7 @@
             </tr>
         }
     </table>
+    
 </body>
 </html>
 

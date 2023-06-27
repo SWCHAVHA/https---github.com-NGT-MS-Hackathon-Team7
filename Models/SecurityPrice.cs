@@ -19,5 +19,7 @@ public partial class SecurityPrice
 
     public string CntlUserid { get; set; } = null!;
 
+    public bool? Enable { get; set; }
+
     public virtual ICollection<Transaction> Transactions { get; set; } = new List<Transaction>();
 }

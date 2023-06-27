@@ -50,6 +50,8 @@ public partial class Transaction
 
     public string CntlUserid { get; set; } = null!;
 
+    public bool? Enable { get; set; }
+
     public virtual LoginUser Login { get; set; } = null!;
 
     public virtual Party Party { get; set; } = null!;
@@ -57,8 +59,4 @@ public partial class Transaction
     public virtual SecurityPenaltyRate Penalty { get; set; } = null!;
 
     public virtual SecurityPrice Price { get; set; } = null!;
-
-
-
-    
 }

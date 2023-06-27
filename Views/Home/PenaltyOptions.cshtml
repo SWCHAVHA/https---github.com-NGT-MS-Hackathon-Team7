@@ -1,4 +1,7 @@
 @model List<Penalty_Calculation1.Models.Transaction>
+    
+
+
 
 @{
 
@@ -9,8 +12,13 @@
 <!DOCTYPE html>
 
 <html>
+    <div>
+        <button ><a type="submit" href="/Home/Index">Back</a> </button>
+    </div>
 
 <head>
+
+
 
     <title>@ViewData["Title"]</title>
 
@@ -60,6 +68,7 @@
     <h1>Penalty Options</h1>
 
     <div style="display: flex; justify-content: space-between;">
+        
         <form method="post" action="/Home/ViewAllPenalties">
             <p>1. Click on the "View all penalty details" button to view all penalty details.</p>
             <button type="submit">View all penalty details</button>
@@ -78,8 +87,6 @@
     </div>
 
 </body>
-
-
 </html>
 
 

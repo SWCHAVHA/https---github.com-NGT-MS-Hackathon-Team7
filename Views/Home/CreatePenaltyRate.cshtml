@@ -1,0 +1,34 @@
+@model Penalty_Calculation1.Models.SecurityPenaltyRate
+
+<h1>Add Penalty Rate</h1>
+
+<form method="post" asp-action="CreatePenaltyRate" asp-controller="Home">
+     
+    @Html.HiddenFor(model => model.CntlUserid)
+    @Html.HiddenFor(model => model.PenaltyId)
+
+    <div class="form-group">
+    <label asp-for="ValidFromDate">Valid From Date</label>
+    <input asp-for="ValidFromDate" class="form-control" />
+    <span asp-validation-for="ValidFromDate" class="text-danger"></span>
+</div>
+
+    <div class="form-group">
+        <label asp-for="PenaltyRate">Penalty Rate</label>
+        <input asp-for="PenaltyRate" class="form-control" />
+        <span asp-validation-for="PenaltyRate" class="text-danger"></span>
+    </div>
+
+   <div class="form-group">
+    <label asp-for="LastUpdatedDate">Last Updated Date</label>
+    <input asp-for="LastUpdatedDate" class="form-control" />
+    <span asp-validation-for="LastUpdatedDate" class="text-danger"></span>
+</div>
+
+
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+
+    <button ><a type="submit" href="/Home/PenaltyRates">Back</a> </button>
+</form>

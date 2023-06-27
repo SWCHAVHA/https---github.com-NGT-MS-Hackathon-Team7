@@ -1,4 +1,7 @@
 @model List<Penalty_Calculation1.Models.SecurityPenaltyRate>
+    
+
+
 
 @{
     ViewData["Title"] = "Penalty Rates";
@@ -12,12 +15,18 @@
 </head>
 <body>
     <h1>Penalty Rates</h1>
-<form method="get" action="/api/SecurityPenaltyRate">
-        <label for="penaltyId">Search by Penalty ID:</label>
-        <input type="text" name="penalty_id" id="penaltyId">
-        <button type="submit">Search</button>
-    </form>
+<form method="post" asp-action="SearchPenaltyRates">
+    <label for="penaltyId">Search by Penalty ID:</label>
+    <input type="number" name="penaltyId" id="penaltyId">
+    <button type="submit">Search</button>
+</form>
 
+<div   class="form-group">
+    <button><a type="submit" href="/Home/CreatePenaltyRate">Create</a> </button>
+
+      <button ><a type="submit" href="/Home/ReferenceData">Back</a> </button>
+
+</div>
     <table>
         <thead>
             <tr>
@@ -47,6 +56,8 @@
             }
         </tbody>
     </table>
-     <button style="margin-left: 200px;"><a type="submit" href="/Home/CreatePenaltyRates">Create</a> </button>
+    
 </body>
 </html>
+
+
